@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OrderDetails } from '../models/orderDetails';
+import { OrderDetailsService } from '../services/order-details.service';
 
 @Component({
   selector: 'app-order-details',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  constructor() { }
+  orderDetails:OrderDetails[]=[];
+  constructor(private orderDetailsService:OrderDetailsService,private aroute:ActivatedRoute) { 
+    var orderId=this.aroute.snapshot.params.id;
+    this.orderDetailsService.getOrderDetailsFromApi(orderId).subscribe(o=>
+      {
+        this.orderDetails=o;
+      })
+  }
 
   ngOnInit(): void {
   }

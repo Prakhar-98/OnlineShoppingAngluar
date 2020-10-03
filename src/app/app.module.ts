@@ -67,7 +67,8 @@ const routes:Routes=[
   {path:'',component:PersonaldetailsComponent}, 
   {path:'deactivateaccount',component:DeactivateaccountComponent},
   {path:'changePassword',component:ChangePasswordComponent},
-  {path:'orders',component:MyOrdersComponent}
+  {path:'orders',component:MyOrdersComponent},
+  {path:'orderDetails/:id',component:OrderDetailsComponent}
 ],canActivate:[UserAuthGuardService]},
   {path:'retailer',component:RetailerdashboardComponent,children:[
   {path:'addproduct',component:AddProductComponent},
